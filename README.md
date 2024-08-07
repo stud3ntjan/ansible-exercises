@@ -5,4 +5,4 @@ Um diese zu bearbeiten macht es Sinn, das Repository zu Klonen oder zu Forken un
 
 In /terraform_setup/ sind Unterordner, die jeweils ein kleines Terraform-Projekt mit einem Teil einer Infrastruktur enthalten. Diese können gerne benutzt werden, um alles nötige für die Aufgaben bereitzustellen.
 
-Vergesst nicht, zum Schluss alle Infrastuktur-Bestandteile mit "terraform destroy" in den jeweiligen Ordnern zu _vernichten_. jsjsjs
+Vergesst nicht, zum Schluss alle Infrastuktur-Bestandteile mit "terraform destroy" in den jeweiligen Ordnern zu _vernichten_.
