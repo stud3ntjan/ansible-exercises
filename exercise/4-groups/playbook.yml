@@ -1,19 +1,102 @@
 ---
-- name: Groups
-  hosts: ???????????????????????????
+- name: Install and Check Services on All Servers
+  hosts: servers
   become: yes
   tasks:
     - name: Ensure Nginx is installed
       apt:
         name: nginx
         state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Nginx is installed
+      dnf:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
     - name: Ensure Git is installed
       apt:
         name: git
         state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Git is installed
+      dnf:
+        name: git
+        state: present
+      when: ansible_os_family == "RedHat"
+
     - name: Check Git version
-      shell: git -v
+      shell: git --version
       register: git_version_output
+
+    - name: Display Git Version
+      debug:
+        var: git_version_output.stdout
+
+- name: Install and Check Services on Webservers
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Nginx is installed
+      dnf:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Ensure Git is installed
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Git is installed
+      dnf:
+        name: git
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Check Git version
+      shell: git --version
+      register: git_version_output
+
+    - name: Display Git Version
+      debug:
+        var: git_version_output.stdout
+
+- name: Install and Check Services on DBservers
+  hosts: dbservers
+  become: yes
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Nginx is installed
+      dnf:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Ensure Git is installed
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Git is installed
+      dnf:
+        name: git
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Check Git version
+      shell: git --version
+      register: git_version_output
+
     - name: Display Git Version
       debug:
         var: git_version_output.stdout
