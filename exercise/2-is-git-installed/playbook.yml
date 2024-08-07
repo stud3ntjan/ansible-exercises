@@ -1,0 +1,15 @@
+---
+- name: Exercise 2
+  hosts: ex2_hosts
+  become: true
+  tasks:
+    - name: Ensure Git is installed
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: Ensure Git is installed
+      dnf:
+        name: git
+        state: present
+      when: ansible_os_family == "RedHat"
