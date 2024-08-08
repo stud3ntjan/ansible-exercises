@@ -1,0 +1,32 @@
+---
+- name: Play for Webserver
+  hosts: webserver
+  tasks:
+    - name: Echo message from Webserver
+      debug:
+        msg: "Hallo von: webserver"
+
+- name: Play for DBserver
+  hosts: dbserver
+  tasks:
+    - name: Echo message from DBserver
+      debug:
+        msg: "Hallo von: dbserver"
+
+- name: Play for Appserver
+  hosts: appserver
+  tasks:
+    - name: Echo message from Appserver
+      debug:
+        msg: "Hallo von: appserver"
+
+- name: Play for All Servers
+  hosts: allservers
+  tasks:
+    - name: Display IP address
+      command: hostname -I
+      register: ip_address_output
+
+    - name: Show IP address
+      debug:
+        var: ip_address_output.stdout
